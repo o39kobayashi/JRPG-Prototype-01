@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour
     private InputAction _explore_movementAction;
     private InputAction _explore_runAction;
     private InputAction _explore_cameraAction;
+    private InputAction _explore_changeCharacter;
 
     private Vector2 _movementInput;
     private Vector2 _cameraInput;
@@ -20,6 +21,7 @@ public class InputManager : MonoBehaviour
     private const string EXPLORE_MOVEMENT_ACTION = "Explore_Movement";
     private const string EXPLORE_RUN_ACTION = "Explore_Run";
     private const string EXPLORE_CAMERA_ACTION = "Explore_Camera";
+    private const string EXPLORE_CHANGE_CHARACTER = "Explore_Change_Character";
 
     public Vector2 MovementInput { get { return _movementInput; } }
     public bool IsRunning { get { return _isRunning; } }
@@ -41,6 +43,9 @@ public class InputManager : MonoBehaviour
 
         _explore_cameraAction.performed += OnCameraInput;
 
+        _explore_changeCharacter = _inputActions.FindAction(EXPLORE_CHANGE_CHARACTER);
+
+        _explore_changeCharacter.performed += OnChangeCharacter;
 
     }
 
@@ -65,6 +70,12 @@ public class InputManager : MonoBehaviour
 
         _cameraController.CameraHorizontalInput = _cameraInput.x;
         _cameraController.CameraVerticalInput = _cameraInput.y * -1.0f;
+    
+    }
+
+    private void OnChangeCharacter(InputAction.CallbackContext context) {
+
+        _playerStateMachine.ChangeCharacter();
     
     }
 

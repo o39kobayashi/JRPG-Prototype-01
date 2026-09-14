@@ -14,10 +14,6 @@ public class PlayerStateMachine : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     
     private CharacterController _characterController;
-
-    [SerializeField] private List<GameObject> _partyMembers;
-
-    private GameObject _activeCharacter;
     
     private Vector2 _movementInput;
     private Vector3 _playerMovement;
@@ -43,6 +39,20 @@ public class PlayerStateMachine : MonoBehaviour
     private PlayerStateFactory _states;
 
     private const string BATTLE_TRIGGER_TAG = "BattleTrigger";
+
+    [SerializeField] private List<GameObject> _characters;
+
+    private GameObject _activeCharacter;
+
+    private const int REVOLVER_INDEX = 0;
+    private const int BLK_MAGE_INDEX = 1;
+    private const int SAMURAI_INDEX = 2;
+    private const int NO_FACE_INDEX = 3;
+
+    private int _currentCharacterIndex = 0; // may be used if need to remember data across scenes, but not used for now
+    private int _activeCharacterIndex;
+    private int _partySize;
+
 
     // getters and setters
     public CharacterController CharacterController { get { return _characterController; } }
@@ -75,12 +85,26 @@ public class PlayerStateMachine : MonoBehaviour
     public bool IsMoving { get { return _isMoving; } set { _isMoving = value; } }
     public bool IsRunning { get { return _isRunning; } set { _isRunning = value; } }
 
+    public GameObject ActiveCharacter { get { return _activeCharacter; } set { _activeCharacter = value; } }
+    public GameObject Character { get { return _characters[_activeCharacterIndex]; } }
+    public GameObject Revolver { get { return _characters[REVOLVER_INDEX]; } }
+    public GameObject BlkMage { get { return _characters[BLK_MAGE_INDEX]; } }
+    public GameObject Samurai { get { return _characters[SAMURAI_INDEX]; } }
+    public GameObject NoFace { get { return _characters[NO_FACE_INDEX]; } }
+    public int ActiveCharacterIndex { get { return _activeCharacterIndex; } set { _activeCharacterIndex = value; } }
+    public int CurrentCharacterIndex { get { return _currentCharacterIndex; } set { _currentCharacterIndex = value; } }
+    public int PartySize { get { return _partySize; } }
+
 
     private void Awake() {
 
-        _characterController = GetComponent<CharacterController>();
-    
-        // _characterController = _exploreStateMachine.GetComponent<CharacterController>();
+        _activeCharacterIndex = 0;
+        _partySize = _characters.Count; // will cause problems if we dont start with 4 party members, need to figure out other way to count current meembers
+
+        _activeCharacter = _characters[_activeCharacterIndex];
+        _activeCharacter.SetActive(true);
+
+        _characterController = _activeCharacter.GetComponent<CharacterController>();
 
     }
 
@@ -109,6 +133,28 @@ public class PlayerStateMachine : MonoBehaviour
         _currentState.UpdateStates();
         _characterController.Move(PlayerMovement * Time.deltaTime);
 
+        //upodate party object position so everyone has some position
+        transform.position = _activeCharacter.transform.position;
+
+    }
+
+    public void ChangeCharacter() {
+
+        _activeCharacterIndex += 1;
+
+        if (_activeCharacterIndex >= _partySize) {
+
+            _activeCharacterIndex = 0;
+
+        }
+
+        _activeCharacter.SetActive(false);
+
+        _activeCharacter = _characters[_activeCharacterIndex];
+
+        _activeCharacter.SetActive(true);
+        _characterController = _activeCharacter.GetComponent<CharacterController>();
+    
     }
 
     private void OnTriggerEnter(Collider other)

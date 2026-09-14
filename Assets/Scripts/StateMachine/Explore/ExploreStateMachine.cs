@@ -19,20 +19,15 @@ public class ExploreStateMachine : MonoBehaviour
 
     private int _currentCharacterIndex = 0;
     private int _activeCharacterIndex;
-
-    public GameObject ActiveCharacter { get { return _activeCharacter; } }
-    public GameObject Revolver { get { return _characters[REVOLVER_INDEX]; } }
-    public GameObject BlkMage { get { return _characters[BLK_MAGE_INDEX]; } }
-    public GameObject Samurai { get { return _characters[SAMURAI_INDEX]; } }
-    public GameObject NoFace { get { return _characters[NO_FACE_INDEX]; } }
-    public int ActiveCharacterIndex { get { return _activeCharacterIndex; } }
-    public int CurrentCharacterIndex { get { return _currentCharacterIndex; } set { _currentCharacterIndex = value; } }
+    private int _partySize;
 
     private void Awake() {
 
         _activeCharacterIndex = _currentCharacterIndex;
 
         _activeCharacter = _characters[0];
+
+        _partySize = _characters.Count;
     
     }
     
