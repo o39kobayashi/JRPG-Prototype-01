@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class BattleHUD : MonoBehaviour
 {
@@ -20,7 +21,15 @@ public class BattleHUD : MonoBehaviour
     
     }
 
-    public void SetHP(int currentHP) {
+    public void SetBattleHUD(BattleUnit battleUnit) {
+
+        _name.text = battleUnit.Name;
+        _currentHP.text = "HP: " + battleUnit.CurrentHP.ToString();
+        _lvl.text = "LVL: " + battleUnit.Level.ToString();
+    
+    }
+
+    public void SetHP(float currentHP) {
 
         if (currentHP < 0) {
 

@@ -59,11 +59,16 @@ public class BattlePlayerTurnState : BattleBaseState {
 
     private IEnumerator PlayerAttack() {
 
-        // dmg enemy
         Debug.Log("PLAYER ATTACKED");
         
-        _enemyIsDead = Ctx.EnemyUnit.TakeDamage(Ctx.PlayerUnit.Damage);
-        Ctx.EnemyHUD.SetHP(Ctx.EnemyUnit.CurrentHP);
+       // _enemyIsDead = Ctx.EnemyUnit.TakeDamage(Ctx.PlayerUnit.Damage);
+        
+        _enemyIsDead = Ctx.EnemyBattleUnit.TakeDamage(Ctx.PlayerBattleUnit.AttackDamage);
+
+
+        // Ctx.EnemyHUD.SetHP(Ctx.EnemyUnit.CurrentHP);
+
+        Ctx.EnemyHUD.SetHP(Ctx.EnemyBattleUnit.CurrentHP);
 
         yield return new WaitForSeconds(PLAYER_WAIT_TIME);
 

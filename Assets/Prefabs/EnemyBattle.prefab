@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3203289824617309600}
-  - component: {fileID: 3578827713162600585}
+  - component: {fileID: -8545092463999444572}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: EnemyBattle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 4411928420086127491}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3578827713162600585
+--- !u!114 &-8545092463999444572
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,14 +42,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7358718043437529872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b639832fe0db6474dbbb55302372adbe, type: 3}
+  m_Script: {fileID: 11500000, guid: 61f366bffc555f64eb75856e2422d519, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  _name: Bobbert
-  _level: 2
-  _damage: 5
-  _maxHP: 30
-  _currentHP: 30
+  m_EditorClassIdentifier: Assembly-CSharp::BattleUnit
 --- !u!1 &8494726084184748644
 GameObject:
   m_ObjectHideFlags: 0

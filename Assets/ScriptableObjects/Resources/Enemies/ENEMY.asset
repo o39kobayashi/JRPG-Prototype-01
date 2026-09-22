@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e302930c7aad114ab29bdf9ee1ae9c1, type: 3}
+  m_Name: ENEMY
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterData
+  _name: Bobbert
+  _model: {fileID: 7358718043437529872, guid: a673c74c9579ad747b05aff6863a1643, type: 3}
+  _battlePrefab: {fileID: 7358718043437529872, guid: a673c74c9579ad747b05aff6863a1643, type: 3}
+  _job: 0
+  _description: 
+  _baseMaxHP: 150
+  _baseAttack: 10
+  _baseDefense: 20
+  _baseSpeed: 50
+  _hpGrowthMultiplier: 1
+  _damageGrowthMultiplier: 1

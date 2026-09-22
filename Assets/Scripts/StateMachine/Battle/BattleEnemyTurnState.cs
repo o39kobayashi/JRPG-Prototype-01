@@ -57,8 +57,11 @@ public class BattleEnemyTurnState : BattleBaseState {
 
         yield return new WaitForSeconds(ENEMY_WAIT_TIME);
 
-        _playerIsDead = Ctx.PlayerUnit.TakeDamage(Ctx.EnemyUnit.Damage);
-        Ctx.PlayerHUD.SetHP(Ctx.PlayerUnit.CurrentHP);
+        // _playerIsDead = Ctx.PlayerUnit.TakeDamage(Ctx.EnemyUnit.Damage);
+        _playerIsDead = Ctx.PlayerBattleUnit.TakeDamage(Ctx.EnemyBattleUnit.AttackDamage);
+
+        // Ctx.PlayerHUD.SetHP(Ctx.PlayerUnit.CurrentHP);
+        Ctx.PlayerHUD.SetHP(Ctx.PlayerBattleUnit.CurrentHP);
 
         CheckSwitchStates();
 
