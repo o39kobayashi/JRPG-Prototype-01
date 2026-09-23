@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e302930c7aad114ab29bdf9ee1ae9c1, type: 3}
   m_Name: BlackMage
   m_EditorClassIdentifier: Assembly-CSharp::CharacterData
-  _name: 
-  _model: {fileID: 0}
-  _job: 0
-  _description: 
-  _baseMaxHP: 0
-  _baseAttack: 0
-  _baseDefense: 0
-  _baseSpeed: 0
-  _hpGrowthMultiplier: 0
-  _damageGrowthMultiplier: 0
+  _name: Emil
+  _model: {fileID: 9149265340599699331, guid: 643f7dec159276349b2910f12d0164c9, type: 3}
+  _battlePrefab: {fileID: 7285606936478672523, guid: f6e66e27845ac154298a47b8dec0fecf, type: 3}
+  _job: 2
+  _description: A puppet who wants to learn magic
+  _baseMaxHP: 50
+  _baseAttack: 35
+  _baseDefense: 45
+  _baseSpeed: 50
+  _hpGrowthMultiplier: 1.2
+  _damageGrowthMultiplier: 1.2

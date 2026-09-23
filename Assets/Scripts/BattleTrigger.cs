@@ -7,16 +7,17 @@ public class BattleTrigger : MonoBehaviour
 
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private EnemyManager _enemyManager;
-
     [SerializeField] private EnemyEncounterData _encounterData;
 
     private List<CharacterData> _enemies;
+    private string _encounterText;
     private int _battleArenaID;
     private int _level;
 
     private void Awake() {
 
         _enemies = _encounterData.Enemies;
+        _encounterText = _encounterData.EncounterText;
         _battleArenaID = _encounterData.BattleArenaID;
         _level = _encounterData.Level;
 
@@ -30,7 +31,7 @@ public class BattleTrigger : MonoBehaviour
 
         _gameManager.InBattle = true;
         // enemymanager setsup character classes to be sent to battle state machine
-        _enemyManager.ParseEncounterData(_enemies, _battleArenaID, _level);
+        _enemyManager.ParseEncounterData(_enemies, _encounterText, _battleArenaID, _level);
         gameObject.SetActive(false);
 
     }

@@ -6,16 +6,19 @@ public class EnemyManager : MonoBehaviour
 {
 
     private List<Character> _currentEnemies;
+    private string _encounterText;
     private int _battleArenaID;
     private int _level;
 
     public List<Character> CurrentEnemies => _currentEnemies;
+    public string EncounterText { get { return _encounterText; } }
     public int BattleArenaID { get { return _battleArenaID; } }
     public int Level { get { return _level; } }
     
-    public void ParseEncounterData(List<CharacterData> enemies, int battleArenaID, int level) {
+    public void ParseEncounterData(List<CharacterData> enemies, string encounterText, int battleArenaID, int level) {
 
         _currentEnemies = new List<Character>();
+        _encounterText = encounterText;
         _battleArenaID = battleArenaID;
         _level = level;
 

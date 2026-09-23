@@ -34,6 +34,7 @@ public class BattleStateMachine : MonoBehaviour
     [SerializeField] private Transform _playerSpawn;
     [SerializeField] private Transform _enemySpawn;
 
+    private Queue<BattleUnit> _unitQueue;
 
     private List<Character> _battleCharacters;
     private List<Character> _battleEnemies;
@@ -83,7 +84,8 @@ public class BattleStateMachine : MonoBehaviour
 
     public List<Character> BattleCharacters { get { return _battleCharacters; } }
     public List<Character> BattleEnemies { get { return _battleEnemies; } }
-    public List<BattleUnit> BatttleUnits { get { return _battleUnits; } }
+    public List<BattleUnit> BattleUnits { get { return _battleUnits; } }
+    public Queue<BattleUnit> UnitQueue { get { return _unitQueue; } }
     
     public Character PlayerCharacter { get { return _playerCharacter; } }
     public Character EnemyCharacter { get { return _enemyCharacter; } }
@@ -93,6 +95,7 @@ public class BattleStateMachine : MonoBehaviour
     public GameObject CurrentBattleArena { get { return _currentBattleArena; } }
     public GameObject TargetMarker { get { return _targetMarker; } }
 
+    public string EncounterText { get { return _enemyManager.EncounterText; } }
     public int BattleArenaID { get { return _enemyManager.BattleArenaID; } }
     public List<Transform> PlayerSpawnPoints { get { return _playerSpawnPoints; } }
     public List<Transform> EnemySpawnPoints { get { return _enemySpawnPoints; } }
@@ -105,6 +108,7 @@ public class BattleStateMachine : MonoBehaviour
     private void OnEnable() {
 
         // create list of battle units
+        _unitQueue = new Queue<BattleUnit>();
         _battleUnits = new List<BattleUnit>();
         
         // whenever battlestatemachine is enabled, get active party members from partymanager

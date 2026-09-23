@@ -16,5 +16,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d822b58565b828e4b96f1252003a8646, type: 2}
   - {fileID: 11400000, guid: b7fd29aef7977f44eae36a6366786e16, type: 2}
   - {fileID: 11400000, guid: b7fd29aef7977f44eae36a6366786e16, type: 2}
+  _encounterText: A group of Bobs approaches, and look pissed!
   _battleArenaID: 0
   _level: 1

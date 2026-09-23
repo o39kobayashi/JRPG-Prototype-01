@@ -22,20 +22,22 @@ public class PartyManager : MonoBehaviour
     private Character _samurai;
     private Character _noFace;
 
+    private const int REVOLVER_STARTING_LEVEL = 1;
+    private const int BLACK_MAGE_STARTING_LEVEL = 1;
+
+
     public Character Revolver { get { return _revolver; } }
     public Character BlackMage { get { return _blackMage; } }
     public Character Samurai { get { return _samurai; } } 
     public Character NoFace { get { return _noFace; } }
-
+    public List<Character> ActiveParty => _activeParty; // makes activeparty read only ==> read only for ui elements / battle unit setup
 
     //remove from this file later
     [SerializeField] private CharacterData _enemyData;
     private Character _enemy;
     public Character Enemy { get { return _enemy; } }
 
-    public List<Character> ActiveParty => _activeParty; // makes activeparty read only ==> read only for ui elements / battle unit setup
-
-    private const int REVOLVER_STARTING_LEVEL = 1;
+    
 
     private void Awake() {
 
@@ -43,17 +45,15 @@ public class PartyManager : MonoBehaviour
 
         _revolver = new Character(_revolverData, REVOLVER_STARTING_LEVEL);
 
-        if (_revolver == null) {
-
-            Debug.Log("null revolver");
-        
-        }
+        _blackMage = new Character(_blackMageData, BLACK_MAGE_STARTING_LEVEL);
 
         // remove later
         _enemy = new Character(_enemyData, 1);
+        //
 
 
         _activeParty.Add(_revolver);
+        _activeParty.Add(_blackMage);
     
     }
     
